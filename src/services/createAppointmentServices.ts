@@ -1,4 +1,5 @@
 import { startOfHour } from "date-fns";
+import { getCustomRepository } from "typeorm";
 
 import Appointment from "../models/Appointment";
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
@@ -8,37 +9,29 @@ interface Request {
     date: Date;
 }
 
-/**
- * Dependency Inversion (SOLID)
- */
-
 class CreateAppointmentService {
-    private appointmentsRepository: AppointmentsRepository;
+    public async execute({ date, provider }: Request): Promise<Appointment> {
+        const appointmentsRepository = getCustomRepository(AppointmentsRepository);
 
-    constructor(appointmentsRepository: AppointmentsRepository) {
-        this.appointmentsRepository = appointmentsRepository;
-    }
-
-
-
-    public execute({ date, provider }: Request): Appointment {
         const appointmentDate = startOfHour(date);
 
-    const findAppointmenteInSameData = this.appointmentsRepository.findByDate(
-        appointmentDate,
-    );
+        const findAppointmentInSameData = await appointmentsRepository.findByDate(
+            appointmentDate,
+        );
 
-    if (findAppointmenteInSameData) {
-        throw Error( 'this appointment is already booked');
+        if (findAppointmentInSameData) {
+            throw Error( 'this appointment is already booked');
+        }
+
+        const appointment = appointmentsRepository.create({
+            provider, 
+            date: appointmentDate,
+        })
+
+        await appointmentsRepository.save(appointment);
+
+        return appointment;
+        }
     }
-
-    const appointment = this.appointmentsRepository.create({
-        provider, 
-        date: appointmentDate,
-    })
-
-    return appointment;
-    }
-}
 
 export default CreateAppointmentService;
