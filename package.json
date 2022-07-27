@@ -32,6 +32,7 @@
     "@types/jsonwebtoken": "^8.5.8",
     "@types/multer": "^1.4.7",
     "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.0.0",
     "typescript": "^2.9.2"
   }
 }
