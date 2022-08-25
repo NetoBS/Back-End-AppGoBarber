@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import uploadConfig from "../../../config/upload";
 
-import AppError from '../../../errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
 import User from '../../../models/User';
 
