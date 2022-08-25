@@ -5,7 +5,7 @@ import uploadconfig from '../config/upload'
 import CreateUserService from '../modules/users/services/createUsersService';
 import UpdateUserAvatarService from '../modules/users/services/UpdateUserAvatarService';
 
-import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import ensureAuthenticated from '../shared/middlewares/ensureAuthenticated';
 
 const usersRouter = Router();
 const upload = multer(uploadconfig);
