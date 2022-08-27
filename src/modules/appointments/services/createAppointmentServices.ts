@@ -2,7 +2,7 @@ import { startOfHour } from "date-fns";
 
 import AppError from '@shared/errors/AppError';
 
-import Appointment from "../../../models/Appointment";
+import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 
 interface IRequest {

@@ -5,7 +5,7 @@ import authConfig from '@config/auth'
 import IUsersRepository from '../repositories/IUsersRepository';
 import AppError from '@shared/errors/AppError';
 
-import User from '../../../models/User';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 
 

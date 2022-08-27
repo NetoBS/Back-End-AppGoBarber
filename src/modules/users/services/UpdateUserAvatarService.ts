@@ -5,7 +5,7 @@ import uploadConfig from "@config/upload";
 import IUsersRepository from "../repositories/IUsersRepository";
 import AppError from '@shared/errors/AppError';
 
-import User from '../../../models/User';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 interface IRequest {
     user_id: string;
