@@ -30,4 +30,4 @@ class AppointmentsRepository implements IAppointmentsRepository {
     }
 }
 
-export default AppointmentsRepository
+export default AppointmentsRepository;
